@@ -1,8 +1,9 @@
-#include "llama_test.h"
+#include "llama_handler.h"
 
 int main(int argc, char** argv) {
 
-    LlamaTest::Run(argc, argv);
+    LlamaHandler llama;
+    llama.Run(argc, argv);
 
     return 0;
 }

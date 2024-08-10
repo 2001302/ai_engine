@@ -5,7 +5,7 @@
 #include "llama.cpp\common\common.h"
 #include "llama.cpp\common\grammar-parser.h"
 
-class LlamaTest
+class LlamaHandler
 {
 public:
 
@@ -17,7 +17,7 @@ public:
 	    LOG_TEE("\n");
 	}
 
-	static int Run(int argc, char** argv) {
+	int Run(int argc, char** argv) {
 
 		gpt_params params;
 
