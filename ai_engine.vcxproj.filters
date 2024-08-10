@@ -5,5 +5,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="llama_handler.h" />
+    <ClInclude Include="stable_diffusion_handler.h" />
   </ItemGroup>
 </Project>
