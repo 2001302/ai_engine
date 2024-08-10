@@ -1,22 +1,19 @@
 #pragma once
 #include <iostream>
 #include <filesystem>
-#include "llama.cpp\ggml\include\ggml.h"
 #include "llama.cpp\common\common.h"
-#include "llama.cpp\common\grammar-parser.h"
 
-class LlamaHandler
+static void print_usage(int argc, char** argv, const gpt_params& params) {
+	gpt_params_print_usage(argc, argv, params);
+
+	LOG_TEE("\nexample usage:\n");
+	LOG_TEE("\n    %s -m model.gguf -p \"Hello my name is\" -n 32\n", argv[0]);
+	LOG_TEE("\n");
+}
+
+class LlamaModel
 {
 public:
-
-	static void print_usage(int argc, char** argv, const gpt_params& params) {
-	    gpt_params_print_usage(argc, argv, params);
-
-	    LOG_TEE("\nexample usage:\n");
-	    LOG_TEE("\n    %s -m model.gguf -p \"Hello my name is\" -n 32\n", argv[0]);
-	    LOG_TEE("\n");
-	}
-
 	int Run(int argc, char** argv) {
 
 		gpt_params params;
@@ -38,9 +35,7 @@ public:
 		llama_numa_init(params.numa);
 
 		// initialize the model
-
 		llama_model_params model_params = llama_model_params_from_gpt_params(params);
-
 		llama_model* model = llama_load_model_from_file(params.model.c_str(), model_params);
 
 		if (model == NULL) {
@@ -49,9 +44,7 @@ public:
 		}
 
 		// initialize the context
-
 		llama_context_params ctx_params = llama_context_params_from_gpt_params(params);
-
 		llama_context* ctx = llama_new_context_with_model(model, ctx_params);
 
 		if (ctx == NULL) {
@@ -60,7 +53,6 @@ public:
 		}
 
 		// tokenize the prompt
-
 		std::vector<llama_token> tokens_list;
 		tokens_list = ::llama_tokenize(ctx, params.prompt, true);
 
@@ -77,7 +69,6 @@ public:
 		}
 
 		// print the prompt token-by-token
-
 		fprintf(stderr, "\n");
 
 		for (auto id : tokens_list) {
@@ -88,7 +79,6 @@ public:
 
 		// create a llama_batch with size 512
 		// we use this object to submit token data for decoding
-
 		llama_batch batch = llama_batch_init(512, 0, 1);
 
 		// evaluate the initial prompt
@@ -105,7 +95,6 @@ public:
 		}
 
 		// main loop
-
 		int n_cur = batch.n_tokens;
 		int n_decode = 0;
 
@@ -169,10 +158,8 @@ public:
 		fprintf(stderr, "\n");
 
 		llama_batch_free(batch);
-
 		llama_free(ctx);
 		llama_free_model(model);
-
 		llama_backend_free();
 
 		return 0;
