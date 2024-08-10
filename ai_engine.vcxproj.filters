@@ -4,7 +4,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="llama_handler.h" />
-    <ClInclude Include="stable_diffusion_handler.h" />
+    <ClInclude Include="llama_model.h" />
+    <ClInclude Include="stable_diffusion_model.h" />
   </ItemGroup>
 </Project>

@@ -105,14 +105,14 @@
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\llama.cpp\include;$(SolutionDir)\llama.cpp\ggml\include;$(SolutionDir)\stable-diffusion.cpp\thirdparty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\llama.cpp\include;$(SolutionDir)\stable-diffusion.cpp\thirdparty;$(SolutionDir)\stable-diffusion.cpp\ggml\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)\llama.cpp\build\src\Debug\llama.lib;$(SolutionDir)\llama.cpp\build\common\Debug\common.lib;$(SolutionDir)\llama.cpp\build\ggml\src\Debug\ggml.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)\llama.cpp\build\src\Debug\llama.lib;$(SolutionDir)\llama.cpp\build\common\Debug\common.lib;$(SolutionDir)\llama.cpp\build\ggml\src\Debug\ggml.lib;$(SolutionDir)\stable-diffusion.cpp\build\ggml\src\Debug\ggml.lib;$(SolutionDir)\stable-diffusion.cpp\build\Debug\stable-diffusion.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -135,8 +135,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="llama_handler.h" />
-    <ClInclude Include="stable_diffusion_handler.h" />
+    <ClInclude Include="llama_model.h" />
+    <ClInclude Include="stable_diffusion_model.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
