@@ -1,11 +1,11 @@
-#include "llama_model.h"
-#include "stable_diffusion_model.h"
+#include "inference_llama.h"
+#include "inference_stable_diffusion.h"
 
 int main(int argc, char** argv) {
 
     int mode = 0;
-    LlamaModel llama;
-    StableDiffusionModel stable_diffusion;
+    InferenceLlama llama;
+    InferenceStableDiffusion stable_diffusion;
 
     while (true) {
         switch (mode)
