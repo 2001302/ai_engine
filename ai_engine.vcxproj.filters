@@ -4,7 +4,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="llama_model.h" />
-    <ClInclude Include="stable_diffusion_model.h" />
+    <ClInclude Include="inference_llama.h" />
+    <ClInclude Include="inference_stable_diffusion.h" />
+    <ClInclude Include="inference.h" />
   </ItemGroup>
 </Project>

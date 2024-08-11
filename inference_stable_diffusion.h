@@ -4,6 +4,7 @@
 #include "stable-diffusion.cpp\stable-diffusion.h"
 #include "stable-diffusion.cpp\mmdit.hpp"
 #include "stable-diffusion.cpp\t5.hpp"
+#include "inference.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_STATIC
@@ -670,7 +671,7 @@ void sd_log_cb(enum sd_log_level_t level, const char* log, void* data) {
     fflush(out_stream);
 }
 
-class StableDiffusionModel
+class InferenceStableDiffusion: public Inference<SDParams>
 {
 public:
 	int Run(int argc, char** argv) {
